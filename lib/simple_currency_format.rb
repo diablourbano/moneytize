@@ -22,55 +22,41 @@ module SimpleCurrencyFormat
 
       @decimal = ',' if @thousands == '.' and @decimal == '.'
     end
+
     def format_currency
       currency = sprintf("%0.2f", @value).split(".")
-      millions_amount = prepare_millions(currency[0])
-      thousands = prepare_thousands(millions_amount)
+
+      millions = [prepare_millions(currency[0])]
+      thousands = prepare_thousands(millions)
+
       currency[0] = thousands.join(@millions).reverse!
       currency = currency.join(@decimal)
+
       "#{@symbol}#{currency}"
     end
 
     def prepare_millions(amount)
-      millions = []
-      amount.reverse!
-
-      if amount.size > 6
-        final_amount = []
-
-        until amount.size < 6
-          final_amount << amount.slice!(0..5)
-        end
-
-        final_amount << amount
-        millions << final_amount
-      else
-        millions << amount
-      end
-
-      millions
+      slice_amount(amount.reverse!, 6, false)
     end
 
-    def prepare_thousands(amount)
-      thousands_amount = []
-      amount.each do |piece_amount|
-        thousands_amount << slice_amount(piece_amount)
-      end
-
-      thousands_amount
+    def prepare_thousands(thousands)
+      thousands.collect! { |amount| slice_amount(amount, 3, true) }
     end
 
-    def slice_amount(piece_amount)
+    def slice_amount(amount, unit_size, join_thousands)
+      return amount unless amount.size > unit_size
+
+      range = unit_size - 1
+      min_size = unit_size + 1
+
       final_amount = []
-      if piece_amount.size > 2
-        until piece_amount.size < 3
-          final_amount << piece_amount.slice!(0..2)
-        end
+      final_amount << amount.slice!(0..range) until amount.size < min_size
+      final_amount << amount
 
-        final_amount << piece_amount
+      if join_thousands
         final_amount.join(@thousands)
       else
-        piece_amount
+        final_amount
       end
     end
   end
