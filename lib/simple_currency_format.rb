@@ -13,15 +13,14 @@ module SimpleCurrencyFormat
     end
 
     def prepare_separators(options)
-      @symbol = options[:with_symbol] || '$'
-      if options[:millions]
-        @millions = "'"
-      end
-      @thousands = options[:thousands]
-      @decimal = options[:decimal] || '.'
+      @symbol = options.fetch(:symbol, '')
+      @thousands = options.fetch(:thousands, '')
+      @decimal = options.fetch(:decimal, '.')
 
       @decimal = ',' if @thousands == '.' and @decimal == '.'
+      @millions = "'" if options[:millions]
     end
+    :wa
 
     def format_currency
       currency = sprintf("%0.2f", @value).split(".")
@@ -31,14 +30,29 @@ module SimpleCurrencyFormat
     end
 
     def millions(amount)
-      [ slice_amount(amount.reverse!, 6, false) ]
+      slice_millions(amount.reverse!)
     end
 
     def thousands(amounts)
-      amounts.collect! { |amount| slice_amount(amount, 3, true) }
+      amounts = [amounts] if amounts.is_a?(String)
+
+      amounts.collect! do |amount|
+        slice_thousands(amount)
+      end
     end
 
-    def slice_amount(amount, unit_size, join_thousands)
+    private
+    
+    def slice_millions(amount)
+      slice_amount(amount, 6)
+    end
+
+    def slice_thousands(amount)
+      thousand = slice_amount(amount)
+      thousand.is_a?(String) ? thousand : thousand.join(@thousands)
+    end
+
+    def slice_amount(amount, unit_size=3)
       return amount unless amount.size > unit_size
 
       range = unit_size - 1
@@ -47,12 +61,6 @@ module SimpleCurrencyFormat
       final_amount = []
       final_amount << amount.slice!(0..range) until amount.size < min_size
       final_amount << amount
-
-      if join_thousands
-        final_amount.join(@thousands)
-      else
-        final_amount
-      end
     end
   end
 end
