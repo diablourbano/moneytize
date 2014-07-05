@@ -7,6 +7,7 @@ require 'version'
 Gem::Specification.new do |gem|
   gem.name = 'simple_currency_format'
   gem.version = SimpleCurrencyFormat::VERSION
+  gem.licenses = ["MIT"]
   gem.authors = ['DiabloUrbano']
   gem.email = ['andresdavila6@gmail.com']
   gem.description = 'formats any numeric value to the expected currency format, choose dot, comma, space or even ¢ for cents. Just check it!'
