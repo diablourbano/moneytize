@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    simple_currency_format (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (3.1.2)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+    columnize (0.8.9)
+    debugger-linecache (1.2.0)
+    rake (10.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  byebug (~> 3.1.2)
+  rake
+  simple_currency_format!
