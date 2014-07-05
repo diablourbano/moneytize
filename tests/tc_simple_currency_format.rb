@@ -36,4 +36,9 @@ class TestSimpleCurrencyFormat < Test::Unit::TestCase
     currency = SimpleCurrencyFormat::CurrencyFormat.format(14578025.54823424, {millions: true})
     assert_equal("$14'578025.55", currency)
   end
+
+  def test_format_with_millions_and_thousands_separator
+    currency = SimpleCurrencyFormat::CurrencyFormat.format(14578025.54823424, {millions: true, thousands: '.'})
+    assert_equal("$14'578.025.55", currency)
+  end
 end

@@ -25,22 +25,17 @@ module SimpleCurrencyFormat
 
     def format_currency
       currency = sprintf("%0.2f", @value).split(".")
+      currency[0] = thousands(millions(currency[0])).join(@millions).reverse!
 
-      millions = [prepare_millions(currency[0])]
-      thousands = prepare_thousands(millions)
-
-      currency[0] = thousands.join(@millions).reverse!
-      currency = currency.join(@decimal)
-
-      "#{@symbol}#{currency}"
+      @symbol.concat(currency.join(@decimal))
     end
 
-    def prepare_millions(amount)
-      slice_amount(amount.reverse!, 6, false)
+    def millions(amount)
+      [ slice_amount(amount.reverse!, 6, false) ]
     end
 
-    def prepare_thousands(thousands)
-      thousands.collect! { |amount| slice_amount(amount, 3, true) }
+    def thousands(amounts)
+      amounts.collect! { |amount| slice_amount(amount, 3, true) }
     end
 
     def slice_amount(amount, unit_size, join_thousands)
