@@ -9,11 +9,11 @@ Gem::Specification.new do |gem|
   gem.version = SimpleCurrencyFormat::VERSION
   gem.authors = ['DiabloUrbano']
   gem.email = ['andresdavila6@gmail.com']
-  gem.description = %q{formats any numeric value to the expected currency format, you can decide to use "." as decimal separator and "," as thousands separator or just use "," as decimal separator. Just check it!}
-  gem.summary = %q{format your currency the way you expect.}
+  gem.description = 'formats any numeric value to the expected currency format, choose dot, comma, space or even ¢ for cents. Just check it!'
+  gem.summary = 'format your currency the way you expect.'
 
-  gem.files = `git ls-files`.split($/)
-  gem.test_files = gem.files.grep(%r{^(test|spec|features)})
+  gem.files = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  gem.test_files = gem.files.grep(/^(tests|spec|features)/)
   gem.require_paths = ['lib']
 
   # ruby version
