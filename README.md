@@ -1,7 +1,9 @@
 # MONEYTIZE
 Did you ever have the requirement:
 > Can you format the value as currency with "," as decimal separator
+
 or
+
 > Can you display "'" as millions separator
 
 It's not too hard to parse a numeric value to format it the way you want,
