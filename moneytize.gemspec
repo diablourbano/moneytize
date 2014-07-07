@@ -7,6 +7,7 @@ require 'version'
 Gem::Specification.new do |gem|
   gem.name = 'moneytize'
   gem.version = Moneytize::VERSION
+  gem.homepage = "http://moneytize.me"
   gem.licenses = ["MIT"]
   gem.authors = ['DiabloUrbano']
   gem.email = ['andresdavila6@gmail.com']
