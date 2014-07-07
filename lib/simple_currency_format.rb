@@ -48,8 +48,10 @@ module SimpleCurrencyFormat
       @decimal = '.' unless allowed_symbols.push('¢').include?(@decimal)
       @thousands = '' unless allowed_symbols.include?(@thousands)
 
-      @decimal = ',' if @thousands == '.' && @decimal == '.'
-      @thousands = '.' if @thousands == ',' && @decimal == ','
+      if @thousands == @decimal
+        @decimal = '.' if @thousands == ',' or @thousands == ' '
+        @decimal = ',' if @thousands == '.'
+      end
     end
 
     def slice_millions(amount)

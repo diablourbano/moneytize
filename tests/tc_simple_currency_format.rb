@@ -34,7 +34,7 @@ class TestSimpleCurrencyFormat < Test::Unit::TestCase
 
   def test_format_with_different_thousand_separator_comma
     currency = SimpleCurrencyFormat::CurrencyFormat.format(1025.54, thousands: ',', decimal: ',', symbol: '$')
-    assert_equal('$1.025,54', currency)
+    assert_equal('$1,025.54', currency)
   end
 
   def test_format_with_different_thousand_separator_and_decimal_separator
