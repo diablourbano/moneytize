@@ -17,4 +17,4 @@ Just call it with the value to be formatted and the options you expect:
 Moneytize::Currency.format(123456.9803, { currency_symbol: '$', decimal: ',' })
 ```
 
-Check the [documentation](#) to see the options you have.
+Check the [documentation](http://www.moneytize.me) to see the options you have.
