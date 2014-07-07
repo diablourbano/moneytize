@@ -4,7 +4,7 @@ Did you ever have the requirement:
 
 or
 
-> Can you display "'" as millions separator
+> Can you display " ' " as millions separator
 
 It's not too hard to parse a numeric value to format it the way you want,
 but why would you like to repeat the same process every time you need to parse
