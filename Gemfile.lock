@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    simple_currency_format (0.0.1)
+    moneytize (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -18,5 +18,5 @@ PLATFORMS
 
 DEPENDENCIES
   byebug (~> 3.1.2)
+  moneytize!
   rake
-  simple_currency_format!

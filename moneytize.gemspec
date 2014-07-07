@@ -5,8 +5,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'version'
 
 Gem::Specification.new do |gem|
-  gem.name = 'simple_currency_format'
-  gem.version = SimpleCurrencyFormat::VERSION
+  gem.name = 'moneytize'
+  gem.version = Moneytize::VERSION
   gem.licenses = ["MIT"]
   gem.authors = ['DiabloUrbano']
   gem.email = ['andresdavila6@gmail.com']
@@ -16,6 +16,8 @@ Gem::Specification.new do |gem|
   gem.files = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.test_files = gem.files.grep(/^(tests|spec|features)/)
   gem.require_paths = ['lib']
+
+  gem.has_rdoc = 'yard'
 
   # ruby version
   gem.required_ruby_version = '>= 1.9.3'
