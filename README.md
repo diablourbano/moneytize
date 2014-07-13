@@ -1,4 +1,4 @@
-# MONEYTIZE
+# MONEYTIZE [![Build Status](https://travis-ci.org/jreyes33/moneytize.svg?branch=update-tests)](https://travis-ci.org/jreyes33/moneytize)
 Did you ever have the requirement:
 > Can you format the value as currency with "," as decimal separator
 
