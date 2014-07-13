@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require_relative 'version'
 
 # Moneytize is a simple formatter for currency, it allows to format any currency the way you like,
