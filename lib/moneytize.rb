@@ -1,4 +1,4 @@
-require 'version'
+require_relative 'version'
 
 # Moneytize is a simple formatter for currency, it allows to format any currency the way you like,
 # for example, you can decide to separate thousands with ',' and decimals with '.'.
