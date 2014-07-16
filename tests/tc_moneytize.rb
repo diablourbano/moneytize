@@ -1,7 +1,9 @@
-require 'test/unit'
+# encoding: utf-8
+
+require 'minitest/autorun'
 require_relative '../lib/moneytize'
 
-class TestMoneytize < Test::Unit::TestCase
+class TestMoneytize < MiniTest::Unit::TestCase
   def test_format_without_decimals
     currency = Moneytize::Currency.format(1025)
     assert_equal('1025.00', currency)
@@ -22,7 +24,7 @@ class TestMoneytize < Test::Unit::TestCase
     assert_equal('1025,54', currency)
   end
 
-  def test_format_with_different_decimal_separator
+  def test_format_with_different_decimal_separator_and_currency_symbol
     currency = Moneytize::Currency.format(1025.54, decimal: '¢', currency_symbol: '$')
     assert_equal('$1025¢54', currency)
   end
