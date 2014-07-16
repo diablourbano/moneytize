@@ -18,3 +18,6 @@ Moneytize::Currency.format(123456.9803, { currency_symbol: '$', decimal: ',' })
 ```
 
 Check the [documentation](http://www.moneytize.me) to see the options you have.
+
+## Collaborators
+- [Jonathan Reyes](https://github.com/jreyes33)
